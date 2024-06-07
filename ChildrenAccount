@@ -1,0 +1,33 @@
+from account import Account
+
+class Children_Account(Account):
+    def _init_(self, account_number, account_holder, balance=0):
+        super()._init_(account_number, account_holder, balance)
+        self.__interest_rate = 0.07
+
+    def get_interest_rate(self):
+        return self.__interest_rate
+
+    def set_interest_rate(self, interest_rate):
+        self.__interest_rate = interest_rate
+        return self.__interest_rate
+
+    def withdraw(self, amount):
+        print("Sorry but you cannot withdraw from children's account")
+
+    def deposit(self, amount):
+        return super().deposit(amount)
+
+    def add_interest(self):
+        interest_rate = self.get_interest_rate()
+        interest = self.balance * interest_rate
+        self.deposit(interest)
+        return interest
+
+
+child_account = Children_Account(77989637828, "James Emmanuel")
+child_account.withdraw(1000)
+child_account.deposit(7000)
+child_account.get_balance()
+child_account.add_interest()
+child_account.display()
