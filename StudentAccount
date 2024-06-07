@@ -1,0 +1,25 @@
+from account import Account
+
+class StudentAccount(Account):
+    def _init_(self, account_number, account_user, balance=0):
+        super()._init_(account_number, account_user, balance)
+
+    def deposit(self, amount):
+        if amount > 50000:
+            print("Your deposit limit has been exceeded")
+        else:
+            super().deposit(amount)
+
+    def withdraw(self, amount):
+        if amount > 2000:
+            print("Your withdrawal limit has been exceeded")
+        else:
+            super().withdraw(amount)
+
+
+student = StudentAccount(7785892371, "Michael Onoja", 1000)
+student.deposit(2500)
+student.withdraw(650)
+student.withdraw(185000)
+student.deposit(100000)
+student.display()
